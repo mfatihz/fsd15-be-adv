@@ -1,0 +1,12 @@
+{
+    "fullname":"admin",
+    "username":"admin",
+    "password":"admin",
+    "email":"admin@chill.app"
+}
+{
+    "fullname":"guest",
+    "username":"guest",
+    "email":"guest@chill.app",
+    "password":"guest"
+}

@@ -1,0 +1,49 @@
+INSERT INTO genres (
+    label,
+    format_path
+)
+VALUES
+(
+    "Aksi",
+    "action"
+),
+(
+    "Anak-anak",
+    "kids"
+),(
+    "Anime",
+    "anime"
+),(
+    "Britania",
+    "britania"
+),(
+    "Drama",
+    "drama"
+),(
+    "Fantasi Ilmiah & Fantasi",
+    "fantasy"
+),(
+    "Kejahatan",
+    "crime"
+),(
+    "KDrama",
+    "kdrama"
+),(
+    "Komedi",
+    "comedy"
+),(
+    "Petualangan",
+    "adventure"
+),(
+    "Perang",
+    "war"
+),(
+    "Romantis",
+    "romance"
+),(
+    "Sains & Alam",
+    "science-nature"
+),(
+    "Thriller",
+    "thriller"
+);

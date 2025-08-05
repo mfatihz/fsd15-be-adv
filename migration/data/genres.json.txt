@@ -1,0 +1,56 @@
+{
+    "label": "Aksi",
+    "format_path": "action"
+}
+{
+    "label": "Anak-anak",
+    "format_path": "kids"
+}
+{
+    "label": "Anime",
+    "format_path": "anime"
+}
+{
+    "label": "Britania",
+    "format_path": "britania"
+}
+{
+    "label": "Drama",
+    "format_path": "drama"
+}
+{
+    "label": "Fantasi Ilmiah & Fantasi",
+    "format_path": "fantasy"
+}
+{
+    "label": "Kejahatan",
+    "format_path": "crime"
+}
+{
+    "label": "KDrama",
+    "format_path": "kdrama"
+}
+{
+    "label": "Komedi",
+    "format_path": "comedy"
+}
+{
+    "label": "Petualangan",
+    "format_path": "adventure"
+}
+{
+    "label": "Perang",
+    "format_path": "war"
+}
+{
+    "label": "Romantis",
+    "format_path": "romance"
+}
+{
+    "label": "Sains & Alam",
+    "format_path": "science-nature"
+}
+{
+    "label": "Thriller",
+    "format_path": "thriller"
+}

@@ -1,0 +1,405 @@
+{
+"tipe": "Series",
+"judul": "My Hero Academia",
+"tanggal_keluar": "2023-01-01",
+"cast": "My, Hero, Academia, Dan, Lain, Lain2",
+"director": "M. Hero",
+"durasi": null,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/academia.svg",
+"path_gambar_landscape": "/images/poster-landscape/academia.svg",
+"ringkasan": "[very-long] Lorem ipsum dolor sit amet consectetur adipiscing elit maecenas donec vivamus aptent proin, erat odio risus mi leo penatibus sed aliquet nibh dis. Curae cursus turpis fames at dictum tempor nostra placerat ridiculus, maecenas neque quam egestas aliquet luctus a suspendisse, curabitur lacus platea habitant tristique faucibus augue torquent. Quam lobortis laoreet dui massa ad montes primis ac, eget eleifend hac nulla turpis ridiculus risus in magnis, sagittis morbi nisi potenti sodales convallis torquent. Eleifend quisque ad suspendisse senectus cursus inceptos varius risus habitasse, ac dignissim odio orci viverra curae molestie nibh commodo suscipit, cras per curabitur vivamus vel habitant magna eros. Himenaeos cursus arcu parturient aliquet mattis magnis, habitant rhoncus sapien fringilla bibendum risus, elementum ultrices donec justo porta. Iaculis libero tempus metus varius bibendum ut suscipit sollicitudin, molestie congue egestas id felis curabitur leo, penatibus ridiculus cubilia rutrum posuere interdum pellentesque. Accumsan odio penatibus aenean tempus volutpat porttitor hac etiam imperdiet, potenti leo eget aliquam conubia vel rutrum himenaeos nascetur, class dictumst dictum sem quis inceptos in faucibus."
+}
+{
+"tipe": "Series",
+"judul": "Alice in Borderland",
+"tanggal_keluar": "2023-01-01",
+"cast": "Alice, In, Borderland, Dan, Lain, Lain2",
+"director": "Alice",
+"durasi": null,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/alice-border.svg",
+"path_gambar_landscape": "/images/poster-landscape/alice-border.svg",
+"ringkasan": "[long] Lorem ipsum dolor sit amet consectetur adipiscing elit maecenas donec vivamus aptent proin, erat odio risus mi leo penatibus sed aliquet nibh dis. Curae cursus turpis fames at dictum tempor nostra placerat ridiculus, maecenas neque quam egestas aliquet luctus a suspendisse, curabitur lacus platea habitant tristique faucibus augue torquent. Quam lobortis laoreet dui massa ad montes primis ac, eget eleifend hac nulla turpis ridiculus risus in magnis, sagittis morbi nisi potenti sodales convallis torquent."
+}
+{
+"tipe": "Series",
+"judul": "All of Us are Dead",
+"tanggal_keluar": "2023-01-01",
+"cast": "All, Of, Us, Are, Dead, Dan, Lain, Lain2",
+"director": "US Dead",
+"durasi": null,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/all-us-dead.svg",
+"path_gambar_landscape": "/images/poster-landscape/all-us-dead.svg",
+"ringkasan": "[medium] Lorem ipsum dolor sit amet consectetur adipiscing elit maecenas donec vivamus aptent proin, erat odio risus mi leo penatibus sed aliquet nibh dis. Curae cursus turpis fames at dictum tempor nostra placerat ridiculus, maecenas neque quam egestas aliquet luctus a suspendisse, curabitur lacus platea habitant tristique faucibus augue torquent."
+}
+{
+"tipe": "Film",
+"judul": "Avatar 3",
+"tanggal_keluar": "2023-01-01",
+"cast": "Avatar, Tiga, Dan, Lain, Lain2",
+"director": "Ava",
+"durasi": 150,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "/images/hero/avatar.svg",
+"path_gambar_portrait": "/images/poster-portrait/avatar.svg",
+"path_gambar_landscape": "/images/poster-landscape/avatar.svg",
+"ringkasan": "Avatar 3 melanjutkan cerita konflik antara manusia dan Na'vi di planet Pandora. Dalam pertempuran untuk sumber daya dan kekuasaan, manusia dan sekutu Na'vi bersatu untuk melindungi tanah mereka. Film ini mengangkat tema persatuan dan perlawanan terhadap eksploitasi."
+}
+{
+"tipe": "Series",
+"judul": "Batman",
+"tanggal_keluar": "2023-01-01",
+"cast": "Bat, Man, Dan, Lain, Lain2",
+"director": "Bat",
+"durasi": null,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/batman.svg",
+"path_gambar_landscape": "/images/poster-landscape/batman.svg",
+"ringkasan": "[very-short] Lorem ipsum dolor sit amet."
+}
+{
+"tipe": "Film",
+"judul": "Baymax",
+"tanggal_keluar": "2023-01-01",
+"cast": "Bay, max, Dan, Lain, Lain2",
+"director": "Bay",
+"durasi": 100,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/baymax.svg",
+"path_gambar_landscape": "/images/poster-landscape/baymax.svg",
+"ringkasan": "[very-long] Lorem ipsum dolor sit amet consectetur adipiscing elit maecenas donec vivamus aptent proin, erat odio risus mi leo penatibus sed aliquet nibh dis. Curae cursus turpis fames at dictum tempor nostra placerat ridiculus, maecenas neque quam egestas aliquet luctus a suspendisse, curabitur lacus platea habitant tristique faucibus augue torquent. Quam lobortis laoreet dui massa ad montes primis ac, eget eleifend hac nulla turpis ridiculus risus in magnis, sagittis morbi nisi potenti sodales convallis torquent. Eleifend quisque ad suspendisse senectus cursus inceptos varius risus habitasse, ac dignissim odio orci viverra curae molestie nibh commodo suscipit, cras per curabitur vivamus vel habitant magna eros. Himenaeos cursus arcu parturient aliquet mattis magnis, habitant rhoncus sapien fringilla bibendum risus, elementum ultrices donec justo porta. Iaculis libero tempus metus varius bibendum ut suscipit sollicitudin, molestie congue egestas id felis curabitur leo, penatibus ridiculus cubilia rutrum posuere interdum pellentesque. Accumsan odio penatibus aenean tempus volutpat porttitor hac etiam imperdiet, potenti leo eget aliquam conubia vel rutrum himenaeos nascetur, class dictumst dictum sem quis inceptos in faucibus."
+}
+{
+"tipe": "Film",
+"judul": "Big Hero 6",
+"tanggal_keluar": "2023-01-01",
+"cast": "Big, Hero, Dan, Lain, Lain2",
+"director": "Big 6",
+"durasi": 80,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/big-hero-6.svg",
+"path_gambar_landscape": "/images/poster-landscape/big-hero-6.svg",
+"ringkasan": "[long] Lorem ipsum dolor sit amet consectetur adipiscing elit maecenas donec vivamus aptent proin, erat odio risus mi leo penatibus sed aliquet nibh dis. Curae cursus turpis fames at dictum tempor nostra placerat ridiculus, maecenas neque quam egestas aliquet luctus a suspendisse, curabitur lacus platea habitant tristique faucibus augue torquent. Quam lobortis laoreet dui massa ad montes primis ac, eget eleifend hac nulla turpis ridiculus risus in magnis, sagittis morbi nisi potenti sodales convallis torquent."
+}
+{
+"tipe": "Series",
+"judul": "Blue Lock",
+"tanggal_keluar": "2023-01-01",
+"cast": "Blue, Lock, Dan, Lain, Lain2",
+"director": "Look Blue",
+"durasi": null,
+"top_10": null,
+"rating_isi": "G",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/blue-lock.svg",
+"path_gambar_landscape": "/images/poster-landscape/blue-lock.svg",
+"ringkasan": "[medium] Lorem ipsum dolor sit amet consectetur adipiscing elit maecenas donec vivamus aptent proin, erat odio risus mi leo penatibus sed aliquet nibh dis. Curae cursus turpis fames at dictum tempor nostra placerat ridiculus, maecenas neque quam egestas aliquet luctus a suspendisse, curabitur lacus platea habitant tristique faucibus augue torquent."
+}
+{
+"tipe": "Film",
+"judul": "Dilan",
+"tanggal_keluar": "2023-01-01",
+"cast": "Di, Lan, Andil, Dan, Lain, Lain2",
+"director": "Linda",
+"durasi": 132,
+"top_10": null,
+"rating_isi": "PG",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/dilan.svg",
+"path_gambar_landscape": "/images/poster-landscape/dilan.svg",
+"ringkasan": "[short] Lorem ipsum dolor sit amet consectetur adipiscing elit maecenas donec vivamus aptent proin, erat odio risus mi leo penatibus sed aliquet nibh dis."
+}
+{
+"tipe": "Film",
+"judul": "Don't Look Up",
+"tanggal_keluar": "2023-01-01",
+"cast": "Dono, Look, Up, Dan, Lain, Lain2",
+"director": "Dono",
+"durasi": 115,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/dont-look-up.svg",
+"path_gambar_landscape": "/images/poster-landscape/dont-look-up.svg",
+"ringkasan": "[very-short] Lorem ipsum dolor sit amet."
+}
+{
+"tipe": "Series",
+"judul": "Duty after School",
+"tanggal_keluar": "2023-01-01",
+"cast": "Duty, After, School, Dan, Lain, Lain2",
+"director": "DA School",
+"durasi": null,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "/images/hero/duty-after-school.svg",
+"path_gambar_portrait": "/images/poster-portrait/duty-after-school.svg",
+"path_gambar_landscape": "/images/poster-landscape/duty-after-school.svg",
+"ringkasan": "Sebuah benda tak dikenal mengambil alih dunia. Dalam keputusasaan, Departemen Pertahanan mulai merekrut lebih banyak tentara, termasuk siswa sekolah menengah. Mereka pun segera menjadi pejuang garis depan dalam perang."
+}
+{
+"tipe": "Film",
+"judul": "Fast X",
+"tanggal_keluar": "2023-01-01",
+"cast": "Fast, Ten, Dan, Lain, Lain2",
+"director": "X",
+"durasi": 69,
+"top_10": null,
+"rating_isi": "NR",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/fast.svg",
+"path_gambar_landscape": "/images/poster-landscape/fast.svg",
+"ringkasan": "[very-long] Lorem ipsum dolor sit amet consectetur adipiscing elit maecenas donec vivamus aptent proin, erat odio risus mi leo penatibus sed aliquet nibh dis. Curae cursus turpis fames at dictum tempor nostra placerat ridiculus, maecenas neque quam egestas aliquet luctus a suspendisse, curabitur lacus platea habitant tristique faucibus augue torquent. Quam lobortis laoreet dui massa ad montes primis ac, eget eleifend hac nulla turpis ridiculus risus in magnis, sagittis morbi nisi potenti sodales convallis torquent. Eleifend quisque ad suspendisse senectus cursus inceptos varius risus habitasse, ac dignissim odio orci viverra curae molestie nibh commodo suscipit, cras per curabitur vivamus vel habitant magna eros. Himenaeos cursus arcu parturient aliquet mattis magnis, habitant rhoncus sapien fringilla bibendum risus, elementum ultrices donec justo porta. Iaculis libero tempus metus varius bibendum ut suscipit sollicitudin, molestie congue egestas id felis curabitur leo, penatibus ridiculus cubilia rutrum posuere interdum pellentesque. Accumsan odio penatibus aenean tempus volutpat porttitor hac etiam imperdiet, potenti leo eget aliquam conubia vel rutrum himenaeos nascetur, class dictumst dictum sem quis inceptos in faucibus."
+}
+{
+"tipe": "Film",
+"judul": "Guardians of the Galaxy",
+"tanggal_keluar": "2023-01-01",
+"cast": "Guardian, Galaxy, Dan, Lain, Lain2",
+"director": "Galaxy",
+"durasi": 83,
+"top_10": null,
+"rating_isi": "PG",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/guardian-galaxy.svg",
+"path_gambar_landscape": "/images/poster-landscape/guardian-galaxy.svg",
+"ringkasan": "[long] Lorem ipsum dolor sit amet consectetur adipiscing elit maecenas donec vivamus aptent proin, erat odio risus mi leo penatibus sed aliquet nibh dis. Curae cursus turpis fames at dictum tempor nostra placerat ridiculus, maecenas neque quam egestas aliquet luctus a suspendisse, curabitur lacus platea habitant tristique faucibus augue torquent. Quam lobortis laoreet dui massa ad montes primis ac, eget eleifend hac nulla turpis ridiculus risus in magnis, sagittis morbi nisi potenti sodales convallis torquent."
+}
+{
+"tipe": "Film",
+"judul": "Happiness",
+"tanggal_keluar": "2023-01-01",
+"cast": "Happiness, Dan, Lain, Lain2",
+"director": "Happy",
+"durasi": 105,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "/images/hero/happiness.svg",
+"path_gambar_portrait": "/images/poster-portrait/happiness.svg",
+"path_gambar_landscape": "/images/poster-landscape/happiness.svg",
+"ringkasan": "Mengisahkan tentang kelompok orang yang berjuang untuk bertahan hidup di dalam sebuah gedung apartemen yang penuh dengan zombie. Sayangnya, virus zombie hanya terdapat di dalam area apartemen tersebut dan tidak menyebar ke luar kawasan apartemen."
+}
+{
+"tipe": "Film",
+"judul": "Jurassic World",
+"tanggal_keluar": "2023-01-01",
+"cast": "Jurrasic, World, Dan, Lain, Lain2",
+"director": "Jurrasic",
+"durasi": 135,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/jurassic.svg",
+"path_gambar_landscape": "/images/poster-landscape/jurassic.svg",
+"ringkasan": "[short] Lorem ipsum dolor sit amet consectetur adipiscing elit maecenas donec vivamus aptent proin, erat odio risus mi leo penatibus sed aliquet nibh dis."
+}
+{
+"tipe": "Film",
+"judul": "Megan",
+"tanggal_keluar": "2023-01-01",
+"cast": "Megan, Dan, Lain, Lain2",
+"director": "aMeng",
+"durasi": 72,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/megan.svg",
+"path_gambar_landscape": "/images/poster-landscape/megan.svg",
+"ringkasan": "[very-short] Lorem ipsum dolor sit amet."
+}
+{
+"tipe": "Film",
+"judul": "The Little Mermaid",
+"tanggal_keluar": "2023-01-01",
+"cast": "Little, Mermaid, Dan, Lain, Lain2",
+"director": "Mermaid",
+"durasi": 92,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/mermaid.svg",
+"path_gambar_landscape": "/images/poster-landscape/mermaid.svg",
+"ringkasan": "[very-long] Lorem ipsum dolor sit amet consectetur adipiscing elit maecenas donec vivamus aptent proin, erat odio risus mi leo penatibus sed aliquet nibh dis. Curae cursus turpis fames at dictum tempor nostra placerat ridiculus, maecenas neque quam egestas aliquet luctus a suspendisse, curabitur lacus platea habitant tristique faucibus augue torquent. Quam lobortis laoreet dui massa ad montes primis ac, eget eleifend hac nulla turpis ridiculus risus in magnis, sagittis morbi nisi potenti sodales convallis torquent. Eleifend quisque ad suspendisse senectus cursus inceptos varius risus habitasse, ac dignissim odio orci viverra curae molestie nibh commodo suscipit, cras per curabitur vivamus vel habitant magna eros. Himenaeos cursus arcu parturient aliquet mattis magnis, habitant rhoncus sapien fringilla bibendum risus, elementum ultrices donec justo porta. Iaculis libero tempus metus varius bibendum ut suscipit sollicitudin, molestie congue egestas id felis curabitur leo, penatibus ridiculus cubilia rutrum posuere interdum pellentesque. Accumsan odio penatibus aenean tempus volutpat porttitor hac etiam imperdiet, potenti leo eget aliquam conubia vel rutrum himenaeos nascetur, class dictumst dictum sem quis inceptos in faucibus."
+}
+{
+"tipe": "Film",
+"judul": "Missing",
+"tanggal_keluar": "2023-01-01",
+"cast": "Miss Ing, Dan, Lain, Lain2",
+"director": "Ing",
+"durasi": 71,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/missing.svg",
+"path_gambar_landscape": "/images/poster-landscape/missing.svg",
+"ringkasan": "[long] Lorem ipsum dolor sit amet consectetur adipiscing elit maecenas donec vivamus aptent proin, erat odio risus mi leo penatibus sed aliquet nibh dis. Curae cursus turpis fames at dictum tempor nostra placerat ridiculus, maecenas neque quam egestas aliquet luctus a suspendisse, curabitur lacus platea habitant tristique faucibus augue torquent. Quam lobortis laoreet dui massa ad montes primis ac, eget eleifend hac nulla turpis ridiculus risus in magnis, sagittis morbi nisi potenti sodales convallis torquent."
+}
+{
+"tipe": "Film",
+"judul": "A Man Called Otto",
+"tanggal_keluar": "2023-01-01",
+"cast": "Aman, Called, Otto, Dan, Lain, Lain2",
+"director": "Aman & Otto",
+"durasi": null,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/otto.svg",
+"path_gambar_landscape": "/images/poster-landscape/otto.svg",
+"ringkasan": "[medium] Lorem ipsum dolor sit amet consectetur adipiscing elit maecenas donec vivamus aptent proin, erat odio risus mi leo penatibus sed aliquet nibh dis. Curae cursus turpis fames at dictum tempor nostra placerat ridiculus, maecenas neque quam egestas aliquet luctus a suspendisse, curabitur lacus platea habitant tristique faucibus augue torquent."
+}
+{
+"tipe": "Film",
+"judul": "Quantumania",
+"tanggal_keluar": "2023-01-01",
+"cast": "Q, Dan, Lain, Lain2",
+"director": "Quant",
+"durasi": 93,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/quantumania.svg",
+"path_gambar_landscape": "/images/poster-landscape/quantumania.svg",
+"ringkasan": "[short] Lorem ipsum dolor sit amet consectetur adipiscing elit maecenas donec vivamus aptent proin, erat odio risus mi leo penatibus sed aliquet nibh dis."
+}
+{
+"tipe": "Film",
+"judul": "Rio",
+"tanggal_keluar": "2023-01-01",
+"cast": "Rio, de, Jeneiro, Dan, Lain, Lain2",
+"director": "Rio",
+"durasi": 110,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/rio.svg",
+"path_gambar_landscape": "/images/poster-landscape/rio.svg",
+"ringkasan": "[very-short] Lorem ipsum dolor sit amet."
+}
+{
+"tipe": "Film",
+"judul": "Shazam",
+"tanggal_keluar": "2023-01-01",
+"cast": "Shazma, Dan, Lain, Lain2",
+"director": "Szham",
+"durasi": 154,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/shazam.svg",
+"path_gambar_landscape": "/images/poster-landscape/shazam.svg",
+"ringkasan": "[very-long] Lorem ipsum dolor sit amet consectetur adipiscing elit maecenas donec vivamus aptent proin, erat odio risus mi leo penatibus sed aliquet nibh dis. Curae cursus turpis fames at dictum tempor nostra placerat ridiculus, maecenas neque quam egestas aliquet luctus a suspendisse, curabitur lacus platea habitant tristique faucibus augue torquent. Quam lobortis laoreet dui massa ad montes primis ac, eget eleifend hac nulla turpis ridiculus risus in magnis, sagittis morbi nisi potenti sodales convallis torquent. Eleifend quisque ad suspendisse senectus cursus inceptos varius risus habitasse, ac dignissim odio orci viverra curae molestie nibh commodo suscipit, cras per curabitur vivamus vel habitant magna eros. Himenaeos cursus arcu parturient aliquet mattis magnis, habitant rhoncus sapien fringilla bibendum risus, elementum ultrices donec justo porta. Iaculis libero tempus metus varius bibendum ut suscipit sollicitudin, molestie congue egestas id felis curabitur leo, penatibus ridiculus cubilia rutrum posuere interdum pellentesque. Accumsan odio penatibus aenean tempus volutpat porttitor hac etiam imperdiet, potenti leo eget aliquam conubia vel rutrum himenaeos nascetur, class dictumst dictum sem quis inceptos in faucibus."
+}
+{
+"tipe": "Film",
+"judul": "Sonic 2",
+"tanggal_keluar": "2023-01-01",
+"cast": "Sonic, Two, Dan, Lain, Lain2",
+"director": "Son",
+"durasi": 102,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/sonic-2.svg",
+"path_gambar_landscape": "/images/poster-landscape/sonic-2.svg",
+"ringkasan": "[long] Lorem ipsum dolor sit amet consectetur adipiscing elit maecenas donec vivamus aptent proin, erat odio risus mi leo penatibus sed aliquet nibh dis. Curae cursus turpis fames at dictum tempor nostra placerat ridiculus, maecenas neque quam egestas aliquet luctus a suspendisse, curabitur lacus platea habitant tristique faucibus augue torquent. Quam lobortis laoreet dui massa ad montes primis ac, eget eleifend hac nulla turpis ridiculus risus in magnis, sagittis morbi nisi potenti sodales convallis torquent."
+}
+{
+"tipe": "Series",
+"judul": "Spiderman",
+"tanggal_keluar": "2023-01-01",
+"cast": "Spider, Man, Dan, Lain, Lain2",
+"director": "Spider",
+"durasi": null,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/spiderman.svg",
+"path_gambar_landscape": "/images/poster-landscape/spiderman.svg",
+"ringkasan": "[medium] Lorem ipsum dolor sit amet consectetur adipiscing elit maecenas donec vivamus aptent proin, erat odio risus mi leo penatibus sed aliquet nibh dis. Curae cursus turpis fames at dictum tempor nostra placerat ridiculus, maecenas neque quam egestas aliquet luctus a suspendisse, curabitur lacus platea habitant tristique faucibus augue torquent."
+}
+{
+"tipe": "Series",
+"judul": "The Little Stuart",
+"tanggal_keluar": "2023-01-01",
+"cast": "The, Little Suart, Dan, Lain, Lain2",
+"director": "Stuart Little",
+"durasi": null,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/stuart.svg",
+"path_gambar_landscape": "/images/poster-landscape/stuart.svg",
+"ringkasan": "[short] Lorem ipsum dolor sit amet consectetur adipiscing elit maecenas donec vivamus aptent proin, erat odio risus mi leo penatibus sed aliquet nibh dis."
+}
+{
+"tipe": "Film",
+"judul": "Suzume",
+"tanggal_keluar": "2023-01-01",
+"cast": "Suzu, Me, Dan, Lain, Lain2",
+"director": "Me",
+"durasi": 45,
+"top_10": null,
+"rating_isi": "PG",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/suzume.svg",
+"path_gambar_landscape": "/images/poster-landscape/suzume.svg",
+"ringkasan": "Ringkasan belum tersedia"
+}
+{
+"tipe": "Film",
+"judul": "The Tomorrow War",
+"tanggal_keluar": "2023-01-01",
+"cast": "Tom, War, Dan, Lain, Lain2",
+"director": "Tom",
+"durasi": 116,
+"top_10": null,
+"rating_isi": "18+",
+"rating_penonton": 4.7,
+"path_gambar_hero": "",
+"path_gambar_portrait": "/images/poster-portrait/tom-war.svg",
+"path_gambar_landscape": "/images/poster-landscape/tom-war.svg",
+"ringkasan": "[very-short] Lorem ipsum dolor sit amet."
+}

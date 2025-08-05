@@ -1,0 +1,8 @@
+{
+    "metode_bayar": "Kartu Debit/Kredit",
+    "biaya_admin": 3000
+}
+{
+    "metode_bayar": "BCA Virtual Account",
+    "biaya_admin": 2500
+}

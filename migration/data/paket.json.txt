@@ -1,0 +1,18 @@
+{
+    "nama_paket": "Individual",
+    "jumlah_akun": "1 Akun",
+    "biaya_paket": 49990,
+    "keuntungan": "Tidak ada iklan, Kualitas 720p, Download konten pilihan"
+}
+{
+    "nama_paket": "Berdua",
+    "jumlah_akun": "2 Akun",
+    "biaya_paket": 79990,
+    "keuntungan": "Tidak ada iklan, Kualitas 1080p, Download konten pilihan"
+}
+{
+    "nama_paket": "Keluarga",
+    "jumlah_akun": "5-7 Akun",
+    "biaya_paket": 159990,
+    "keuntungan": "Tidak ada iklan, Kualitas 4K, Download konten pilihan"
+}

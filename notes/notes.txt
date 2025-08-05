@@ -1,0 +1,60 @@
+show databases;
+
+---------------------------------------
+
+CREATE DATABASE chill_app;
+USE chill_app;
+
+
+CREATE TABLE series_film (
+	id integer PRIMARY KEY AUTO_INCREMENT,
+	title VARCHAR(255) NOT NULL,
+	summary VARCHAR(255),
+	created TIMESTAMP NOT NULL DEFAULT NOW()
+)
+
+
+INSERT INTO series_film (title, 
+VALUES
+('Duty after School', 'Sebuah... ')
+
+---------------------------------------
+
+pada code...
+1. create folder
+2. create database.js
+3. npm init -y
+
+...
+5. edit package.json jika diperlukan
+"type": "module",
+
+
+----------------
+6. install npm i mysql2
+
+----------------
+
+7. edit database.js:
+const MySQL = require('mysql2');
+
+const pool = MySQL.createPool({
+	host: '127.0.0.1',
+user: 'root',
+password: '',
+database: 'chill_app'
+}).promise()
+
+
+8.
+const result = await pool.query("SELECT * FROM series_film")
+const [rows] = result[0]
+atau..
+const [rows] = await pool.query("SELECT * FROM series_film")
+
+dan agar lbh bersih...
+const function getSeriesMovies() {
+	const [rows] = await pool.query("SELECT * FROM series_film")
+	return rows
+}
+

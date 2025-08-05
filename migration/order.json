@@ -1,0 +1,9 @@
+{
+    "id_user": 1,
+    "id_paket": 1,
+    "id_pembayaran": 1,
+    "kode_bayar": "CP12345",
+    "kode_voucher": "CV12345",
+    "tanggal_beli": "2025-07-30",
+    "tanggal_bayar": null
+}
