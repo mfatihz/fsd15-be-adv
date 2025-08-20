@@ -1,5 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
+import * as am from './middlewares/authMiddleware.js'
+import * as ac from './controllers/authController.js'
 import * as uc from './controllers/userController.js'
 import * as sfc from './controllers/seriesFilmController.js'
 import * as gc from './controllers/genreController.js'
@@ -15,8 +17,12 @@ const app = express()
 
 app.use(express.json())
 
+// auth
+app.post("/auth/register", ac.register)
+app.get("/auth/login", ac.login)
+app.get("/verify-email", ac.verifyEmail)
+
 // User
-app.post("/users", uc.addUser)
 app.get("/users", uc.getUsers)
 app.get("/users/:id", uc.getUser)
 app.patch("/users/:id", uc.updateUser)
@@ -64,14 +70,6 @@ app.get("/orders/:id", oc.getOrder)
 app.put("/orders/:id", oc.updateOrder)
 app.delete("/orders/:id", oc.deleteOrder)
 
-// junction-table: daftar-saya
-app.post("/my-list/users/:id", mlc.addToMyList)
-app.get("/my-list", mlc.getMyLists)
-app.get("/my-list/users/:id", mlc.getMyListFilms)
-app.get("/my-list/films/:id", mlc.getMyListUsers)
-app.put("/my-list/users/:id", mlc.updateMyList)
-app.delete("/my-list/users/:id/films/:filmId", mlc.deleteFromMyList)
-
 // junction-table: memiliki_genre
 app.post("/films/:id/genres", hgc.addGenreToSeriesFilm)
 app.get("/films/:id/genres", hgc.getSeriesFilmHasGenre)
@@ -79,10 +77,18 @@ app.get("/genres/:id/films", hgc.getGenreHasSeriesFilm)
 app.put("/films/:id/genres/", hgc.updateGenresToSeriesFilm)
 app.delete("/films/:id/genres/:genreId", hgc.deleteGenreFromSeriesFilm)
 
+// junction-table: daftar-saya
+app.post("/my-list/users/:id", am.verifyToken, mlc.addToMyList)
+app.get("/my-list", mlc.getMyLists)
+app.get("/my-list/users/:id", am.verifyToken, mlc.getMyListFilms)
+app.get("/my-list/films/:id", mlc.getMyListUsers)
+app.put("/my-list/users/:id", am.verifyToken, mlc.updateMyList)
+app.delete("/my-list/users/:id/films/:filmId", am.verifyToken, mlc.deleteFromMyList)
+
 // error handling
 app.use((err, req, res, next) => {
     console.error(err.stack)
-    res.status(500).send('========== Something broke! ==========')
+    res.status(500).send('=== Something broke! ===')
 })
 
 app.listen(process.env.PORT, () => {

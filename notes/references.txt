@@ -1,0 +1,5 @@
+Build Node.js User Authentication - Password Login
+https://www.youtube.com/watch?v=Ud5xKCYQTjM
+
+JWT Authentication Tutorial - Node.js
+https://www.youtube.com/watch?v=mbsmsi7l3r4

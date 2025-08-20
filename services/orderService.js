@@ -1,4 +1,4 @@
-import { pool } from './pool.js'
+import { pool } from '../config/db.js'
 
 export async function addOrder({
     id_user,

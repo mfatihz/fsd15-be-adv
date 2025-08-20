@@ -27,7 +27,7 @@ export async function addSeriesFilm(req, res) {
             rating_penonton,
             ringkasan
         })
-        console.log(film)
+        
         res.status(201).json({ message: "Film created successfully", film });
     } catch (err) {
         const status = err.statusCode || 500;
@@ -36,7 +36,8 @@ export async function addSeriesFilm(req, res) {
 }
 
 export async function getSeriesFilms(req, res) {
-    const film = await sfs.getSeriesFilms()
+    const { year, search_title, order_by } = req.query
+    const film = await sfs.getSeriesFilms({ year, search_title, order_by })
     res.status(200).send(film)
 }
 

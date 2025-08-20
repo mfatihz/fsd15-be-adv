@@ -1,17 +1,5 @@
 import * as us from "../services/userService.js";
 
-export async function addUser(req, res) {
-    const { username, email, password: plainPassword } = req.body;
-
-    try {
-        const user = await us.addUser({ username, email, plainPassword });
-        res.status(201).json({ message: "User created successfully", user });
-    } catch (err) {
-        const status = err.statusCode || 500;
-        res.status(status).json({ error: err.message });
-    }
-}
-
 export async function getUsers(req, res) {
     const user = await us.getUsers();
     res.status(200).send(user);

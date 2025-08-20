@@ -1,15 +1,17 @@
--- v2
+-- db v2
 
 CREATE DATABASE adv_chill_app;
 USE adv_chill_app;
 
 -- tabel: users
 CREATE TABLE users (
-    -- id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     fullname VARCHAR(255) NOT NULL,
     username VARCHAR(255) NOT NULL,
-    email VARCHAR(255) PRIMARY KEY,
-    password CHAR(60) NOT NULL -- bcrypt
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password CHAR(60) NOT NULL, -- bcrypt
+    token VARCHAR(255) UNIQUE,
+    is_verified BOOLEAN DEFAULT FALSE
 );
 
 -- tabel: series_film

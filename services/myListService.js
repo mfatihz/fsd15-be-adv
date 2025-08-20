@@ -1,7 +1,8 @@
-import { pool } from './pool.js'
+import { pool } from '../config/db.js'
 import { getSeriesFilm } from './seriesFilmService.js'
 
 export async function addToMyList({ userId, filmId }) {
+    
     const [rows] = await pool.query(`
         INSERT INTO daftar_saya (
             id_user,
@@ -83,7 +84,7 @@ export async function updateMyList({ userId, filmIds }) {
 
         await conn.commit()
 
-        console.log('MyList transaction berhasil.');
+        console.log('Update MyList transaction berhasil.');
         return filmIds
     } catch (err) {
         let error;

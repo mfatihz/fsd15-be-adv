@@ -63,7 +63,7 @@ export async function updateEpisodeMovie(req, res) {
             durasi,
             tanggal_ditambahkan
         })
-        console.log(episode)
+        
         res.status(200).json({ message: "Episode updated", episode });
     } catch (err) {
         const status = err.statusCode || 500;

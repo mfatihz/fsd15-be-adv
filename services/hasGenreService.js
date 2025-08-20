@@ -1,5 +1,5 @@
+import { pool } from '../config/db.js'
 import { getGenre } from './genreService.js'
-import { pool } from './pool.js'
 
 export async function addGenreToSeriesFilm({ filmId, genreId }) {
     const [rows] = await pool.query(`
@@ -52,7 +52,7 @@ export async function updateGenresToSeriesFilm({ filmId, genreIds }) {
 
         await conn.commit()
 
-        console.log('Transaction berhasil.');
+        console.log('Update Genres transaction berhasil.');
         return genreIds
     } catch (err) {
         conn.rollback()
