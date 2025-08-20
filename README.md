@@ -34,8 +34,8 @@ Skill set:
 
 ## Task
 1. Menambahkan entitas `User`
-- [x] Atribut entitas `User`: `Fullname`, `Username`, `Password`, `email`, `token`
-- [x] Buat tabel pada database
+        - [x] Atribut entitas `User`: `Fullname`, `Username`, `Password`, `email`, `token`
+        - [x] Buat tabel pada database
 
 2. Implementasi Register
 - [x] Buat service/controller untuk menerima data User baru menggunakan perintah `INSERT`
