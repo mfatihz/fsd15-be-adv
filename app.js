@@ -11,6 +11,9 @@ import * as pmc from './controllers/paymentMethodController.js'
 import * as oc from './controllers/orderController.js'
 import * as mlc from './controllers/myListController.js'
 import * as hgc from './controllers/hasGenreController.js'
+import uploadSingleAvatar from './middlewares/multerMiddleware.js'
+import { handleMulterError, validateFileUpload } from './middlewares/uploadMiddleware.js'
+import { deleteAvatar, getAvatar, getAvatarByUserId, uploadAvatar } from './controllers/imageController.js'
 
 dotenv.config();
 const app = express()
@@ -73,7 +76,7 @@ app.delete("/orders/:id", oc.deleteOrder)
 // junction-table: memiliki_genre
 app.post("/films/:id/genres", hgc.addGenreToSeriesFilm)
 app.get("/films/:id/genres", hgc.getSeriesFilmHasGenre)
-app.get("/genres/:id/films", hgc.getGenreHasSeriesFilm)
+app.get("/films/genres/:id", hgc.getGenreHasSeriesFilm)
 app.put("/films/:id/genres/", hgc.updateGenresToSeriesFilm)
 app.delete("/films/:id/genres/:genreId", hgc.deleteGenreFromSeriesFilm)
 
@@ -84,6 +87,17 @@ app.get("/my-list/users/:id", am.verifyToken, mlc.getMyListFilms)
 app.get("/my-list/films/:id", mlc.getMyListUsers)
 app.put("/my-list/users/:id", am.verifyToken, mlc.updateMyList)
 app.delete("/my-list/users/:id/films/:filmId", am.verifyToken, mlc.deleteFromMyList)
+
+// Upload avatar image
+app.post('/avatar/upload',
+  uploadSingleAvatar,
+  handleMulterError,
+  validateFileUpload,
+  uploadAvatar
+);
+app.get('/avatar/:filename', getAvatar);
+app.get('/avatar/user/:userId', getAvatarByUserId);
+app.delete('/avatar/:filename', deleteAvatar);
 
 // error handling
 app.use((err, req, res, next) => {

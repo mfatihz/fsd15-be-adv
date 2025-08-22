@@ -76,7 +76,7 @@ nodemailer
 
 7. Implementasi Upload Image
 Multer
-- [ ] 1. Install `multer`
-- [ ] 2. Buat folder `upload` di root app
-- [ ] 3. Buat service untuk menangani multer 
-- [ ] 4. Buat route dengan endpoin `/upload`
+- [x] 1. Install `multer`
+- [x] 2. Buat folder `upload` di root app
+- [x] 3. Buat service untuk menangani multer 
+- [x] 4. Buat route dengan endpoint `/upload`

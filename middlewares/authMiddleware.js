@@ -11,8 +11,8 @@ export async function verifyToken(req, res, next) {
         
         const authHeader = req.headers.authorization;
         const token = authHeader.split(' ')[1];
-        if (!token || token.length < 10) {
-            return res.status(401).send('Invalid token format');
+        if (!token) {
+            return res.status(401).send('Access token required');
         }
 
         const payload = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)

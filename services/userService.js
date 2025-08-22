@@ -86,43 +86,6 @@ export async function deleteUser({ id }) {
     return result;
 }
 
-export async function findByToken(token) {
-    const [result] = await pool.query(
-        'SELECT id FROM users WHERE token = ?',
-        [token]
-    );
-
-    return result[0];
-}
-
-export async function deleteToken(userId) {
-    const result = await pool.query(
-        'UPDATE users SET token = NULL WHERE id = ?',
-        [userId]
-    )
-}
-
-export async function verifyUser(userId) {
-    const result = await pool.query(
-        'UPDATE users SET is_verified = TRUE WHERE id = ?',
-        [userId]
-    )
-}
-
-export async function setUserToken({userId, token}) {
-    await pool.query(
-        'UPDATE users SET token = ? WHERE id = ?',
-        [token, userId]
-    );
-}
-export async function findByEmail(email) {
-    const [result] = await pool.query(
-        'SELECT * FROM users WHERE email = ?',
-        [email]
-    );
-    return result[0];
-}
-
 export async function addUser({ fullname, username, email, plainPassword }) {
     if (!fullname || !username || !email || !plainPassword) {
         const error = new Error('All fields are required');
@@ -162,3 +125,40 @@ export async function addUser({ fullname, username, email, plainPassword }) {
     }
 }
 
+export async function findByEmail(email) {
+    const [result] = await pool.query(
+        'SELECT * FROM users WHERE email = ?',
+        [email]
+    );
+    return result[0];
+}
+
+export async function findByToken(token) {
+    const [result] = await pool.query(
+        'SELECT id FROM users WHERE token = ?',
+        [token]
+    );
+
+    return result[0];
+}
+
+export async function deleteToken(userId) {
+    const result = await pool.query(
+        'UPDATE users SET token = NULL WHERE id = ?',
+        [userId]
+    )
+}
+
+export async function verifyUser(userId) {
+    const result = await pool.query(
+        'UPDATE users SET is_verified = TRUE WHERE id = ?',
+        [userId]
+    )
+}
+
+export async function setUserToken({userId, token}) {
+    await pool.query(
+        'UPDATE users SET token = ? WHERE id = ?',
+        [token, userId]
+    );
+}
