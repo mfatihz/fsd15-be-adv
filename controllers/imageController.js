@@ -8,7 +8,6 @@ const __dirname = path.dirname(__filename);
 
 export const uploadAvatar = (req, res) => {
   try {
-    console.log('uploadAvatar:', req);
     if (!req.file) {
       return res.status(400).json({
         success: false,
@@ -42,7 +41,6 @@ export const uploadAvatar = (req, res) => {
 
 export const getAvatar = (req, res) => {
   try {
-    console.log('getAvatar:', req);
     const filename = req.params.filename;
     const avatarPath = path.join(__dirname, '../uploads/avatars', filename);
 
@@ -65,7 +63,6 @@ export const getAvatar = (req, res) => {
 
 export const deleteAvatar = (req, res) => {
   try {
-    console.log('deleteAvatar:', req);
     const filename = req.params.filename;
     const avatarPath = path.join(__dirname, '../uploads/avatars', filename);
 
@@ -94,7 +91,6 @@ export const deleteAvatar = (req, res) => {
 // Get avatar by user ID (if you store user-avatar mapping)
 export const getAvatarByUserId = (req, res) => {
   try {
-    console.log('getAvatarByUserId:', req);
     const userId = req.params.userId;
     
     // TODO: update using query filename from database

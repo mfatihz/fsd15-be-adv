@@ -1,30 +1,56 @@
 import multer from "multer"
 
 export const handleMulterError = (error, req, res, next) => {
-    console.log("handleMulterError")
-    if (error instanceof multer.MulterError) {
-        if (error.code === 'LIMIT_FILE_SIZE') {
-            return res.status(400).json({ message: 'File too large. maximum size is 5MB.' });
-        }
-        if (error.code === 'LIMIT_UNEXPECTED_FILE') {
-            return res.status(400).json({ message: 'Only one avatar image allowed.' });
-        }
-        if (error.code === 'LIMIT_FILE_COUNT') {
-            return res.status(400).json({ message: 'Too many files uploaded.' });
-        }
+  if (error instanceof multer.MulterError) {
+    switch (error.code) {
+      case 'LIMIT_FILE_SIZE':
+        return res.status(400).json({ 
+          success: false,
+          message: 'File too large. Maximum size is 5MB.' 
+        });
+      case 'LIMIT_UNEXPECTED_FILE':
+        return res.status(400).json({ 
+          success: false,
+          message: 'Only one avatar image allowed.' 
+        });
+      case 'LIMIT_FILE_COUNT':
+        return res.status(400).json({ 
+          success: false,
+          message: 'Too many files uploaded.' 
+        });
+      default:
+        return res.status(400).json({ 
+          success: false,
+          message: 'File upload error: ' + error.message 
+        });
     }
-    if (error.message === 'Only image files are allowed!') {
-        return res.status(400).json({ message: error.message });
-    }
+  }
+  
+  if (error.message.includes('image files')) {
+    return res.status(400).json({ 
+      success: false,
+      message: error.message 
+    });
+  }
 
-    // Handle other errors
-    return res.status(400).json({ message: 'File upload failed: ' + error.message });
+  next(error);
 }
 
 export const validateFileUpload = (req, res, next) => {
-    console.log("validateFileUpload")
-    if (!req.file) {
-        return res.status(400).json({ message: 'No file uploaded. Please select an image file.' });
-    }
-    next();
+  if (!req.file) {
+    return res.status(400).json({ 
+      success: false,
+      message: 'No file uploaded. Please select an image file.' 
+    });
+  }
+  
+  // Additional validation
+  if (req.file.size === 0) {
+    return res.status(400).json({ 
+      success: false,
+      message: 'Uploaded file is empty.' 
+    });
+  }
+  
+  next();
 };

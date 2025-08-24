@@ -10,7 +10,7 @@ export async function sendVerificationEmail(user) {
     
     await setUserToken({userId: user.id, token});
 
-    const verificationUrl = `${process.env.BASE_URL}/verify-email?token=${token}`;
+    const verificationUrl = `${process.env.BASE_URL}/auth/verify-email?token=${token}`;
     
     const mailContents = {
         from: process.env.EMAIL_FROM,

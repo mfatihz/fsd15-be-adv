@@ -23,7 +23,7 @@ app.use(express.json())
 // auth
 app.post("/auth/register", ac.register)
 app.get("/auth/login", ac.login)
-app.get("/verify-email", ac.verifyEmail)
+app.get("/auth/verify-email", ac.verifyEmail)
 
 // User
 app.get("/users", uc.getUsers)
@@ -89,9 +89,9 @@ app.put("/my-list/users/:id", am.verifyToken, mlc.updateMyList)
 app.delete("/my-list/users/:id/films/:filmId", am.verifyToken, mlc.deleteFromMyList)
 
 // Upload avatar image
-app.post('/avatar/upload',
+app.post('/avatar/upload', am.verifyToken,
   uploadSingleAvatar,
-  handleMulterError,
+  handleMulterError, // Should be immediately after Multer
   validateFileUpload,
   uploadAvatar
 );

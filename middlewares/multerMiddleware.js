@@ -19,10 +19,8 @@ const storage = multer.diskStorage({
         cb(null, uploadDir);//directory to save files
     },
     filename: function (req, file, cb) {
-        const userId = req.user?.id || 'unknown';
-        // FIXED: Clean filename to remove special characters
-        const cleanOriginalName = file.originalname.replace(/[^a-zA-Z0-9.\-_]/g, '_');
-        cb(null, 'avatar-' + userId + '-' + Date.now() + '-' + Math.round(Math.random() * 1E9) + '-' + cleanOriginalName);
+        const userId = req.userId || 'unknown';
+        cb(null, 'avatar-' + userId + '-' + Date.now() + '-' + Math.round(Math.random() * 1E9) + '-' + file.originalname);
     }
 });
 
