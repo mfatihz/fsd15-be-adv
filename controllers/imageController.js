@@ -96,7 +96,7 @@ export const getAvatarByUserId = (req, res) => {
     // TODO: update using query filename from database
     const avatarsDir = path.join(__dirname, '../uploads/avatars');
     const files = fs.readdirSync(avatarsDir);
-    const userAvatar = files.find(file => file.includes(`-${userId}-`));
+    const userAvatar = files.find(file => file.includes(`avatar-${userId}-`));
     
     if (!userAvatar) {
       return res.status(404).json({

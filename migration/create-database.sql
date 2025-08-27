@@ -10,8 +10,9 @@ CREATE TABLE users (
     username VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     password CHAR(60) NOT NULL, -- bcrypt
-    token VARCHAR(255) UNIQUE,
-    is_verified BOOLEAN DEFAULT FALSE
+    register_token VARCHAR(255) UNIQUE,
+    is_verified BOOLEAN DEFAULT FALSE,
+    refresh_token VARCHAR(255) UNIQUE,
 );
 
 -- tabel: series_film

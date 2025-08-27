@@ -11,8 +11,9 @@ import * as pmc from './controllers/paymentMethodController.js'
 import * as oc from './controllers/orderController.js'
 import * as mlc from './controllers/myListController.js'
 import * as hgc from './controllers/hasGenreController.js'
-import uploadSingleAvatar from './middlewares/multerMiddleware.js'
+//import uploadSingleAvatar, { handleUpload } from './middlewares/multerMiddleware.js'
 import { handleMulterError, validateFileUpload } from './middlewares/uploadMiddleware.js'
+import uploadSingleAvatar from './middlewares/multerMiddleware.js'
 import { deleteAvatar, getAvatar, getAvatarByUserId, uploadAvatar } from './controllers/imageController.js'
 
 dotenv.config();
@@ -22,8 +23,8 @@ app.use(express.json())
 
 // auth
 app.post("/auth/register", ac.register)
-app.get("/auth/login", ac.login)
 app.get("/auth/verify-email", ac.verifyEmail)
+app.post("/auth/login", ac.login)
 
 // User
 app.get("/users", uc.getUsers)
@@ -91,7 +92,7 @@ app.delete("/my-list/users/:id/films/:filmId", am.verifyToken, mlc.deleteFromMyL
 // Upload avatar image
 app.post('/avatar/upload', am.verifyToken,
   uploadSingleAvatar,
-  handleMulterError, // Should be immediately after Multer
+  handleMulterError,
   validateFileUpload,
   uploadAvatar
 );

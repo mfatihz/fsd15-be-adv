@@ -29,7 +29,34 @@ export async function login({ email, password }) {
         throw error;
     }
 
-    const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+    const payload = {
+        id: user.id,
+        username: user.username,
+        email: user.email
+    };
 
-    return accessToken;
+    const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: '15m'
+    });
+    console.log("ACCESS_TOKEN_SECRET: ", process.env.ACCESS_TOKEN_SECRET)
+    console.log("login: ", accessToken)
+    const refreshToken = jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, {
+        expiresIn: '7d'
+    });
+    
+    await pool.query(
+        `UPDATE users SET refresh_token = ? WHERE id = ?`,
+        [refreshToken, user.id]
+    );
+    
+    return { accessToken, refreshToken };
+}
+
+export async function logout(userId) {
+    await pool.query(
+        `UPDATE users SET refresh_token = NULL WHERE id = ?`,
+        [userId]
+    );
+
+    return { message: 'Logged out successfully' };
 }

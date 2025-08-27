@@ -34,6 +34,7 @@ export const handleMulterError = (error, req, res, next) => {
   }
 
   next(error);
+  return res.status(500).json({ success: false, message: 'Unexpected upload error' });
 }
 
 export const validateFileUpload = (req, res, next) => {

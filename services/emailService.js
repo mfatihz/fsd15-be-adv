@@ -1,20 +1,15 @@
-import { v4 as uuidv4 } from "uuid";
 import { transporter } from "../config/mailer.js";
 import dotenv from 'dotenv';
-import { setUserToken } from "./userService.js";
 
 dotenv.config();
 
-export async function sendVerificationEmail(user) {
-    const token = uuidv4();
-    
-    await setUserToken({userId: user.id, token});
+export async function sendVerificationEmail({ email, token }) {
 
     const verificationUrl = `${process.env.BASE_URL}/auth/verify-email?token=${token}`;
     
     const mailContents = {
         from: process.env.EMAIL_FROM,
-        to: user.email,
+        to: email,
         subject: "Chill App's Email Verification",
         html: `
             <h1>Verifikasi Email</h1>

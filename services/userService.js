@@ -3,6 +3,46 @@ import { pool } from "../config/db.js";
 
 const saltRounds = 10;
 
+export async function addUser({ fullname, username, email, plainPassword, token }) {
+    if (!fullname || !username || !email || !plainPassword) {
+        const error = new Error('All fields are required');
+        error.statusCode = 400;
+        throw error;
+    }
+
+    const password = await bcrypt.hash(plainPassword, saltRounds);
+
+    try {
+        // TODO: pindah ke layer Model
+        const [result] = await pool.query(
+            `INSERT INTO users (
+                fullname,
+                username,
+                email,
+                password,
+                register_token,
+                is_verified
+            ) VALUES (?,?,?,?,?,?)`,
+            [fullname, username, email, password, token, 0]
+        );
+
+        return result.insertId;
+
+    } catch (err) {
+        // error duplikat
+        if (err.code === 'ER_DUP_ENTRY') {
+            const error = new Error('Email already registered.');
+            error.statusCode = 409;
+            throw error;
+        }
+
+        // error lain
+        const error = new Error(err.message);
+        error.statusCode = 500;
+        throw error;
+    }
+}
+
 export async function getUsers() {
     const [rows] = await pool.query(`
         SELECT * FROM users
@@ -86,71 +126,32 @@ export async function deleteUser({ id }) {
     return result;
 }
 
-export async function addUser({ fullname, username, email, plainPassword }) {
-    if (!fullname || !username || !email || !plainPassword) {
-        const error = new Error('All fields are required');
-        error.statusCode = 400;
-        throw error;
-    }
-
-    const password = await bcrypt.hash(plainPassword, saltRounds);
-
-    try {
-        // TODO: pindah ke layer Model
-        const [result] = await pool.query(
-            `INSERT INTO users (
-                fullname,
-                username,
-                email,
-                password,
-                is_verified
-            ) VALUES (?,?,?,?,?)`,
-            [fullname, username, email, password, 0]
-        );
-
-        return result.insertId;
-
-    } catch (err) {
-        // error duplikat
-        if (err.code === 'ER_DUP_ENTRY') {
-            const error = new Error('Email sudah terdaftar');
-            error.statusCode = 409;
-            throw error;
-        }
-
-        // error lain
-        const error = new Error(err.message);
-        error.statusCode = 500;
-        throw error;
-    }
-}
-
 export async function findByEmail(email) {
     const [result] = await pool.query(
         'SELECT * FROM users WHERE email = ?',
         [email]
     );
-    return result[0];
+    return result[0] || null;
 }
 
 export async function findByToken(token) {
     const [result] = await pool.query(
-        'SELECT id FROM users WHERE token = ?',
+        'SELECT id FROM users WHERE register_token = ?',
         [token]
     );
 
-    return result[0];
+    return result[0] || null;
 }
 
 export async function deleteToken(userId) {
-    const result = await pool.query(
-        'UPDATE users SET token = NULL WHERE id = ?',
+    await pool.query(
+        'UPDATE users SET register_token = NULL WHERE id = ?',
         [userId]
     )
 }
 
 export async function verifyUser(userId) {
-    const result = await pool.query(
+    await pool.query(
         'UPDATE users SET is_verified = TRUE WHERE id = ?',
         [userId]
     )
@@ -158,7 +159,7 @@ export async function verifyUser(userId) {
 
 export async function setUserToken({userId, token}) {
     await pool.query(
-        'UPDATE users SET token = ? WHERE id = ?',
+        'UPDATE users SET register_token = ? WHERE id = ?',
         [token, userId]
     );
 }
