@@ -41,14 +41,15 @@ export async function register(req, res) {
     }
 }
 
-export async function verifyEmail(req, res) {
+// GET version: verify-email
+export async function checkVerifyToken(req, res) {
     const { token } = req.query;
 
     try {
         if (!token) {
             return res.status(400).json({
                 success: false,
-                message: 'Token is required'
+                message: "Token is required"
             });
         }
 
@@ -57,8 +58,42 @@ export async function verifyEmail(req, res) {
         if (!user) {
             return res.status(401).json({
                 success: false,
-                message: 'Invalid or expired verification token'
-            })
+                message: "Invalid or expired verification token"
+            });
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "Token is valid",
+            token
+        });
+    } catch (error) {
+        console.error("checkVerifyToken error:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Server error"
+        });
+    }
+}
+
+// POST version: verify-email
+export async function verifyEmail(req, res) {
+    const { token } = req.body;
+    try {
+        if (!token) {
+            return res.status(400).json({
+                success: false,
+                message: "Token is required"
+            });
+        }
+
+        const user = await findByToken(token);
+
+        if (!user) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid or expired verification token"
+            });
         }
 
         await verifyUser(user.id);
@@ -66,15 +101,40 @@ export async function verifyEmail(req, res) {
 
         return res.status(200).json({
             success: true,
-            message: 'Email verified successfully'
+            message: "Email verified successfully"
         });
     } catch (error) {
-        console.error("verifyEmail error: ", error);
+        console.error("verifyEmail error:", error);
         return res.status(500).json({
             success: false,
-            message: 'Server error'
-        })
+            message: "Server error"
+        });
     }
+}
+
+// GET + POST version: verify-email
+export async function autoVerifyEmail(req, res) {
+    const { token } = req.query;
+
+    if (!token) {
+        return res.status(400).json({
+            success: false,
+            message: "Token is required"
+        });
+    }
+
+    //////////////////////////////////////////////////////////////
+    // Forward ke POST
+    //////////////////////////////////////////////////////////////
+    // token diinject ke body untuk dipakai pada POST
+    // NOTE:
+    // jika menggunakan middleware express.json(),
+    // inject tidak bisa dilakukan langsung seperti berikut
+    // req.body.token = token;
+    // karena req.body diparsing sekali di awal dan dijadikan immutable
+    // SALAH SATU solusinya adalah req dikirim menggunakan variabel baru
+    const modReq = { body: { token } };
+    return verifyEmail(modReq, res);
 }
 
 export async function login(req, res) {
@@ -91,7 +151,7 @@ export async function login(req, res) {
 
         if (!user.is_verified) {
             const token = uuidv4();
-            await sendVerificationEmail({email, token});
+            await sendVerificationEmail({ email, token });
             return res.status(403).json({
                 success: false,
                 message: 'Email not verified. A new verification email has been sent.'

@@ -1,6 +1,10 @@
 import express from 'express'
 import dotenv from 'dotenv'
-import * as am from './middlewares/authMiddleware.js'
+
+import { verifyToken } from './middlewares/authMiddleware.js'
+import { handleMulterError, validateFileUpload } from './middlewares/uploadMiddleware.js'
+import uploadSingleAvatar from './middlewares/multerMiddleware.js'
+
 import * as ac from './controllers/authController.js'
 import * as uc from './controllers/userController.js'
 import * as sfc from './controllers/seriesFilmController.js'
@@ -11,10 +15,7 @@ import * as pmc from './controllers/paymentMethodController.js'
 import * as oc from './controllers/orderController.js'
 import * as mlc from './controllers/myListController.js'
 import * as hgc from './controllers/hasGenreController.js'
-//import uploadSingleAvatar, { handleUpload } from './middlewares/multerMiddleware.js'
-import { handleMulterError, validateFileUpload } from './middlewares/uploadMiddleware.js'
-import uploadSingleAvatar from './middlewares/multerMiddleware.js'
-import { deleteAvatar, getAvatar, getAvatarByUserId, uploadAvatar } from './controllers/imageController.js'
+import { deleteAvatar, getAvatarByUserId, uploadAvatar } from './controllers/avatarController.js'
 
 dotenv.config();
 const app = express()
@@ -23,7 +24,7 @@ app.use(express.json())
 
 // auth
 app.post("/auth/register", ac.register)
-app.get("/auth/verify-email", ac.verifyEmail)
+app.get("/auth/verify-email", ac.autoVerifyEmail);//NOTE: GET auto forwarded to POST
 app.post("/auth/login", ac.login)
 
 // User
@@ -82,23 +83,23 @@ app.put("/films/:id/genres/", hgc.updateGenresToSeriesFilm)
 app.delete("/films/:id/genres/:genreId", hgc.deleteGenreFromSeriesFilm)
 
 // junction-table: daftar-saya
-app.post("/my-list/users/:id", am.verifyToken, mlc.addToMyList)
+app.post("/my-list/users/:id", verifyToken, mlc.addToMyList)
 app.get("/my-list", mlc.getMyLists)
-app.get("/my-list/users/:id", am.verifyToken, mlc.getMyListFilms)
+app.get("/my-list/users/:id", verifyToken, mlc.getMyListFilms)
 app.get("/my-list/films/:id", mlc.getMyListUsers)
-app.put("/my-list/users/:id", am.verifyToken, mlc.updateMyList)
-app.delete("/my-list/users/:id/films/:filmId", am.verifyToken, mlc.deleteFromMyList)
+app.put("/my-list/users/:id", verifyToken, mlc.updateMyList)
+app.delete("/my-list/users/:id/films/:filmId", verifyToken, mlc.deleteFromMyList)
 
 // Upload avatar image
-app.post('/avatar/upload', am.verifyToken,
+app.post('/avatars/upload',
+  verifyToken,
   uploadSingleAvatar,
   handleMulterError,
   validateFileUpload,
   uploadAvatar
 );
-app.get('/avatar/:filename', getAvatar);
-app.get('/avatar/user/:userId', getAvatarByUserId);
-app.delete('/avatar/:filename', deleteAvatar);
+app.get('/avatars/me', verifyToken, getAvatarByUserId);
+app.delete('/avatars/me', verifyToken, deleteAvatar);
 
 // error handling
 app.use((err, req, res, next) => {
