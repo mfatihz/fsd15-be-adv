@@ -27,7 +27,7 @@ export async function addSeriesFilm(req, res) {
             rating_penonton,
             ringkasan
         })
-        
+
         res.status(201).json({ message: "Film created successfully", film });
     } catch (err) {
         const status = err.statusCode || 500;
@@ -36,9 +36,31 @@ export async function addSeriesFilm(req, res) {
 }
 
 export async function getSeriesFilms(req, res) {
-    const { year, search_title, order_by } = req.query
-    const film = await sfs.getSeriesFilms({ year, search_title, order_by })
-    res.status(200).send(film)
+    try {
+        const { year, searchTitle, ratingMin, ratingMax, orderBy, sortOrder } = req.query;
+
+        const films = await sfs.getSeriesFilms({
+            year,
+            searchTitle,
+            ratingMin,
+            ratingMax,
+            orderBy,
+            sortOrder
+        });
+
+        res.status(200).json({
+            success: true,
+            message: `${films.length} series/movies match`,
+            count: films.length,
+            data: films
+        });
+    } catch (error) {
+        console.error("Error fetching films:", error);
+        res.status(500).json({
+            success: false,
+            message: "Server error while fetching films"
+        });
+    }
 }
 
 export async function getSeriesFilm(req, res) {

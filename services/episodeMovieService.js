@@ -35,7 +35,7 @@ export async function getEpisodeMovies() {
     const [rows] = await pool.query(`
         SELECT * FROM episode_movie
     `)
-    return rows
+    return rows || []
 }
 
 export async function getEpisodeMovie({id}) {
@@ -44,7 +44,7 @@ export async function getEpisodeMovie({id}) {
         FROM episode_movie
         WHERE id = ?
         `, [id])
-    return rows[0]
+    return rows[0] || []
 }
 
 export async function updateEpisodeMovie({

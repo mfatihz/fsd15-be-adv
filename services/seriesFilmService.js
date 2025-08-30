@@ -42,20 +42,30 @@ export async function addSeriesFilm({
     return getSeriesFilm({ id: result.insertId });
 }
 
-export async function getSeriesFilms({ year, search_title, rating_min, rating_max, order_by, sort_order }) {
+export async function getSeriesFilms({ year, searchTitle, ratingMin, ratingMax, orderBy, sortOrder }) {
     const conditions = [];
     const params = [];
 
-    if (year) conditions.push('YEAR(tanggal_keluar) = ?') && params.push(year)
+    if (year) {
+        conditions.push('YEAR(tanggal_keluar) = ?');
+        params.push(year)
+    }
 
-    if (search_title) {
-        const cleanSearch = search_title.replace(/^'|'$/g, '');
+    if (searchTitle) {
+        const cleanSearch = searchTitle.trim();
         conditions.push('judul LIKE ?')
         params.push(`%${cleanSearch}%`)
     }
 
-    if (rating_min) conditions.push('rating >= ?') && params.push(rating_min);
-    if (rating_max) conditions.push('rating <= ?') && params.push(rating_max);
+    if (ratingMin) {
+        conditions.push('rating_penonton >= ?');
+        params.push(ratingMin);
+    }
+    
+    if (ratingMax) {
+        conditions.push('rating_penonton <= ?');
+        params.push(ratingMax);
+    }
 
     let sql = "SELECT * FROM series_film";
 
@@ -63,13 +73,14 @@ export async function getSeriesFilms({ year, search_title, rating_min, rating_ma
         sql += " WHERE " + conditions.join(" AND ");
     }
 
-    const sortOrder = sort_order === 'desc' ? 'DESC' : 'ASC';
-    if (order_by) {
-        sql += ` ORDER BY ${order_by} ${sortOrder}`
-    }
+    const allowedOrderFields = ["id", "judul", "tanggal_keluar", "rating_penonton"];
+    const orderField = allowedOrderFields.includes(orderBy) ? orderBy : "id";
 
+    const orderValue = sortOrder && sortOrder.toLowerCase() === 'desc' ? 'DESC' : 'ASC';
+    sql += ` ORDER BY ${orderField} ${orderValue}`
+    console.log(sql)
     const [rows] = await pool.query(sql, params);
-    return rows;
+    return rows || [];
 }
 
 export async function getSeriesFilm({ id }) {
@@ -81,7 +92,7 @@ export async function getSeriesFilm({ id }) {
         `,
         [id]
     );
-    return rows[0];
+    return rows[0] || [];
 }
 
 export async function updateSeriesFilm({

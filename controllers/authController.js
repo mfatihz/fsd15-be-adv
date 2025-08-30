@@ -129,10 +129,10 @@ export async function autoVerifyEmail(req, res) {
     // token diinject ke body untuk dipakai pada POST
     // NOTE:
     // jika menggunakan middleware express.json(),
-    // inject tidak bisa dilakukan langsung seperti berikut
+    // token tidak bisa diinject langsung pada req seperti berikut ini
     // req.body.token = token;
-    // karena req.body diparsing sekali di awal dan dijadikan immutable
-    // SALAH SATU solusinya adalah req dikirim menggunakan variabel baru
+    // karena req.body sudah diparsing sekali di awal dan dijadikan immutable
+    // SALAH SATU solusinya adalah token dikirim menggunakan variabel baru
     const modReq = { body: { token } };
     return verifyEmail(modReq, res);
 }
