@@ -7,23 +7,39 @@ Stack: `express`, `mysql2`, `dotenv`, `bcrypt`
 
 variabel pada `.env`:
 ```
+# App
 PORT=5000
+BASE_URL=http://localhost:5000
+NODE_ENV=development
 
-MYSQL_HOST='127.0.0.1'
-MYSQL_USER='root'
+# Database
+MYSQL_HOST=127.0.0.1
+MYSQL_USER=root
 MYSQL_PASSWORD=''
-MYSQL_DATABASE='adv_chill_app'
+MYSQL_DATABASE=chill_adv_app
+
+# Auth
+ACCESS_TOKEN_SECRET=766ddeaae4a1bc49917ee60d7d0ceab2900f3eb87ad37dc34856e2b11679304b24ebfc7ccce5e3ed6f7ce33dca9bd3ed6c62bfb416f7a63e57b2d7adc88b715b
+REFRESH_TOKEN_SECRET=0aa5379a8fac966726cd4c95dee3ba70cbdd1dc23eeb1a314a20e0ef9957407bc417fca3451188f67d02415e65bcf5588e933ae99750221ed4f173f3c9a5ba3b
+
+# Email
+EMAIL_SERVICE=gmail
+EMAIL_USERNAME=duahsatuo@gmail.com
+EMAIL_PASSWORD=izwverycqiibgago
+EMAIL_FROM=duahsatuo@gmail.com
 ```
 
 ## Database
+Aplikasi ini menggunakan data dari database
+
 Untuk membuat database, jalankan script `migration/create-database.sql` dalam MySQL.
 
-(Optional) Untuk mengisikan data dummy ke dalam database, jalankan script berikut dalam MySQL:
+Untuk mengisikan data dummy ke dalam database, jalankan script berikut dalam MySQL:
 - `migration/insert-into-series_film.sql`
 - `migration/insert-into-episode_movie.sql`
 - `migration/insert-into-genres.sql`
 
-Contoh dummy data lainnya untuk `POST` atau `UPDATE` dapat dilihat pada folder `migration/data/`
+(Optional) Contoh dummy data lainnya untuk `POST` atau `UPDATE` dapat dilihat pada folder `migration/data/`
 
 ## Fitur
 Skill set:
