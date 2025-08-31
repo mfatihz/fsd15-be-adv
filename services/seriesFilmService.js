@@ -76,7 +76,7 @@ export async function getSeriesFilms({ year, searchTitle, ratingMin, ratingMax, 
     const orderField = allowedOrderFields.includes(orderBy) ? orderBy : "id";
     const orderValue = sortOrder && sortOrder.toLowerCase() === 'desc' ? 'DESC' : 'ASC';
     sql += ` ORDER BY ${orderField} ${orderValue}`
-console.log(sql)
+
     const [rows] = await pool.query(sql, params);
     return rows || [];
 }
