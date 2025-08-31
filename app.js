@@ -29,10 +29,10 @@ app.post("/auth/login", ac.login)
 app.post("/auth/logout", verifyToken, ac.logout)
 
 // User
-app.get("/users", uc.getUsers)
-app.get("/users/:id", uc.getUser)
-app.patch("/users/:id", uc.updateUser)
-app.delete("/users/:id", uc.deleteUser)
+app.get("/users", uc.getUsers) // TODO: Perlu middleware role. Hanya untuk admin
+app.get("/users/me", verifyToken, uc.getUser)
+app.patch("/users/me", verifyToken, uc.updateUser)
+app.delete("/users/:id", verifyToken, uc.deleteUser)
 
 // SeriesFilm
 app.post("/films", sfc.addSeriesFilm)
@@ -84,12 +84,12 @@ app.put("/films/:id/genres/", hgc.updateGenresToSeriesFilm)
 app.delete("/films/:id/genres/:genreId", hgc.deleteGenreFromSeriesFilm)
 
 // junction-table: daftar-saya
-app.post("/my-list/users/:id", verifyToken, mlc.addToMyList)
+app.post("/my-list/users/me", verifyToken, mlc.addToMyList)
 app.get("/my-list", mlc.getMyLists)
-app.get("/my-list/users/:id", verifyToken, mlc.getMyListFilms)
+app.get("/my-list/users/me", verifyToken, mlc.getMyListFilms)
 app.get("/my-list/films/:id", mlc.getMyListUsers)
-app.put("/my-list/users/:id", verifyToken, mlc.updateMyList)
-app.delete("/my-list/users/:id/films/:filmId", verifyToken, mlc.deleteFromMyList)
+app.put("/my-list/users/me", verifyToken, mlc.updateMyList)
+app.delete("/my-list/users/me/films/:filmId", verifyToken, mlc.deleteFromMyList)
 
 // Upload avatar image
 app.post('/avatars/upload',

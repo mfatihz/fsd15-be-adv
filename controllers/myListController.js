@@ -1,14 +1,20 @@
 import * as mls from "../services/myListService.js";
 
 export async function addToMyList(req, res) {
-    const { id: userId } = req.params;
+    const userId = req.userId;
     const { filmId } = req.body;
     try {
         const myList = await mls.addToMyList({ userId, filmId })
-        res.status(201).json({ message: "MyList created successfully", myList });
+        return res.status(201).json({
+            success: true,
+            message: "MyList created successfully",
+            data: myList
+        });
     } catch (err) {
-        const status = err.statusCode || 500;
-        res.status(status).json({ error: err.message });
+        return res.status( err.statusCode || 500).json({
+            success: false,
+            message: err.message || "Server error"
+        });
     }
 }
 
@@ -18,12 +24,9 @@ export async function getMyLists(req, res) {
 }
 
 export async function getMyListFilms(req, res) {
-    const { id } = req.params;
-    
-    if (req.userId !== Number(id)) {
-        return res.status(403).json({ message: 'Forbidden' })
-    }
-    const myList = await mls.getMyListFilms({ id })
+    const userId = req.userId;
+
+    const myList = await mls.getMyListFilms({ userId })
     res.send(myList)
 }
 
@@ -34,25 +37,39 @@ export async function getMyListUsers(req, res) {
 }
 
 export async function updateMyList(req, res) {
-    const { id: userId } = req.params;
+    const userId = req.userId;
     const { filmIds } = req.body;
 
     try {
         const myList = await mls.updateMyList({ userId, filmIds })
-        res.status(200).json({ message: "MyList updated", myList });
+        return res.status(200).json({
+            success: true,
+            message: "MyList updated",
+            data: myList
+        });
     } catch (err) {
         const status = err.statusCode || 500;
-        res.status(status).json({ error: err.message });
+        return res.status( err.statusCode || 500).json({
+            success: false,
+            message: err.message || "Server error"
+        });
     }
 }
 
 export async function deleteFromMyList(req, res) {
-    const { id: userId, filmId } = req.params;
+    const userId = req.userId;
+    const { filmId } = req.params;
     try {
         const myList = await mls.deleteFromMyList({ userId, filmId })
-        res.status(200).json({ message: "MyList deleted" });
+        return res.status(200).json({
+            success: true,
+            message: "Success delete Series/Film form MyList",
+            data: filmId
+        });
     } catch (err) {
-        const status = err.statusCode || 500;
-        res.status(status).json({ error: err.message });
+        return res.status( err.statusCode || 500).json({
+            success: false,
+            message: err.message || "Server error"
+        });
     }
 }

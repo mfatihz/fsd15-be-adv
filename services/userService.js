@@ -47,7 +47,7 @@ export async function getUsers() {
     const [rows] = await pool.query(`
         SELECT * FROM users
     `);
-    return rows;
+    return rows || [];
 }
 
 export async function getUser({ id }) {
@@ -58,55 +58,37 @@ export async function getUser({ id }) {
         `,
         [id]
     );
-    return rows[0];
+    return rows[0] || [];
 }
 
-export async function updateUser({ id, username = null, plainPassword = null }) {
-    const password = plainPassword ? await bcrypt.hash(plainPassword, saltRounds) : null
-    let conn;
-    try {
-        const oUser = await getUser({ id })
+export async function updateUser({ id, updates }) {
+    const keys = Object.keys(updates);
+    if (keys.length === 0) throw new Error("No fields to update");
 
-        conn = await pool.getConnection()
-        await conn.beginTransaction()
+    const updateSets = keys.map(k => `${k} = ?`).join(", ");
+    const values = await Promise.all(
+        keys.map(async k => {
+            if (k.toLowerCase() === "password") {
+                return await bcrypt.hash(updates[k], saltRounds);
+            } else {
+                return updates[k];
+            }
+        })
+    );
 
-        const [result] = await pool.query(`
-            UPDATE users SET
-                username = ?,
-                password = ?
-            WHERE id = ?
-            `,
-            [
-                username || oUser.username,
-                password || oUser.password,
-                id
-            ]
-        );
+    const [result] = await pool.query(
+        `UPDATE users SET ${updateSets} WHERE id = ?`,
+        [... values, id]
+    );
 
-        await conn.commit()
-
-        console.log('Update Users transaction berhasil.');
-        
-        const nUser = await getUser({ id })
-        return { id: nUser.id, username: nUser.username, email: nUser.email};
-    } catch (err) {
-        if (conn) {
-            conn.rollback()
-
-            console.error('Rollback Users transaction karena error:', err);
-            const error = new Error('Email sudah terdaftar');
-            error.statusCode = 409;
-            throw error;
-        }
-
-        // error lain
-        console.error('Connection error:', err);
-        const error = new Error(err.message);
-        error.statusCode = 500;
+    if (result.affectedRows === 0) {
+        const error = new Error("Film not found");
+        error.statusCode = 404;
         throw error;
-    } finally {
-        conn.release()
     }
+
+    const user = await getUser({ id })
+    return user;
 }
 
 export async function deleteUser({ id }) {
@@ -116,7 +98,7 @@ export async function deleteUser({ id }) {
         `,
         [id]
     );
-    
+
     const result = await rows.affectedRows
     if (result === 0) {
         const error = new Error("User not found");
@@ -157,7 +139,7 @@ export async function verifyUser(userId) {
     )
 }
 
-export async function setUserToken({userId, token}) {
+export async function setUserToken({ userId, token }) {
     await pool.query(
         'UPDATE users SET register_token = ? WHERE id = ?',
         [token, userId]

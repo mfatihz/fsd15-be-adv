@@ -30,7 +30,7 @@ export async function getMyLists() {
     return rows
 }
 
-export async function getMyListFilms({ id }) {
+export async function getMyListFilms({ userId }) {
     const [rows] = await pool.query(`
         SELECT
             sf.id,
@@ -51,7 +51,7 @@ export async function getMyListFilms({ id }) {
         JOIN series_film sf
             ON ds.id_series_film = sf.id
         WHERE ds.id_user = ?
-        `, [id]
+        `, [userId]
     )
     return rows
 }
