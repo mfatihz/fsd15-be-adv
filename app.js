@@ -24,8 +24,9 @@ app.use(express.json())
 
 // auth
 app.post("/auth/register", ac.register)
-app.get("/auth/verify-email", ac.autoVerifyEmail);//NOTE: GET auto forwarded to POST
+app.get("/auth/verify-email", ac.autoVerifyEmail); // NOTE: GET auto forwarded to POST
 app.post("/auth/login", ac.login)
+app.post("/auth/logout", verifyToken, ac.logout)
 
 // User
 app.get("/users", uc.getUsers)

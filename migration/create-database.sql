@@ -1,7 +1,7 @@
 -- db v2
 
-CREATE DATABASE adv_chill_app;
-USE adv_chill_app;
+CREATE DATABASE chill_adv_app;
+USE chill_adv_app;
 
 -- tabel: users
 CREATE TABLE users (
@@ -9,10 +9,11 @@ CREATE TABLE users (
     fullname VARCHAR(255) NOT NULL,
     username VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
-    password CHAR(60) NOT NULL, -- bcrypt
+    password CHAR(60) NOT NULL,
     register_token VARCHAR(255) UNIQUE,
     is_verified BOOLEAN DEFAULT FALSE,
     refresh_token VARCHAR(255) UNIQUE,
+    token_version INT DEFAULT 0
 );
 
 -- tabel: series_film

@@ -61,24 +61,22 @@ export async function getSeriesFilms({ year, searchTitle, ratingMin, ratingMax, 
         conditions.push('rating_penonton >= ?');
         params.push(ratingMin);
     }
-    
+
     if (ratingMax) {
         conditions.push('rating_penonton <= ?');
         params.push(ratingMax);
     }
 
     let sql = "SELECT * FROM series_film";
-
     if (conditions.length > 0) {
         sql += " WHERE " + conditions.join(" AND ");
     }
 
     const allowedOrderFields = ["id", "judul", "tanggal_keluar", "rating_penonton"];
     const orderField = allowedOrderFields.includes(orderBy) ? orderBy : "id";
-
     const orderValue = sortOrder && sortOrder.toLowerCase() === 'desc' ? 'DESC' : 'ASC';
     sql += ` ORDER BY ${orderField} ${orderValue}`
-    
+console.log(sql)
     const [rows] = await pool.query(sql, params);
     return rows || [];
 }
@@ -95,52 +93,34 @@ export async function getSeriesFilm({ id }) {
     return rows[0] || [];
 }
 
-export async function updateSeriesFilm({
-    id,
-    tipe,
-    judul,
-    tanggal_keluar,
-    cast,
-    director,
-    durasi,
-    top_10,
-    rating_isi,
-    rating_penonton,
-    ringkasan,
-}) {
+export async function updateSeriesFilm({ id, updates }) {
+    const keys = Object.keys(updates);
+    if (keys.length === 0) throw new Error("No fields to update");
+
+    const updateSets = keys.map(k => `${k} = ?`).join(", ");
+    const values = keys.map(k => updates[k]);
+    
     const [result] = await pool.query(
-        `
-        UPDATE series_film SET
-            tipe = ?,
-            judul = ?,
-            tanggal_keluar = ?,
-            cast = ?,
-            director = ?,
-            durasi = ?,
-            top_10 = ?,
-            rating_isi = ?,
-            rating_penonton = ?,
-            ringkasan = ?
-        WHERE id = ?
-        `,
-        [
-            tipe,
-            judul,
-            tanggal_keluar,
-            cast,
-            director,
-            durasi,
-            top_10,
-            rating_isi,
-            rating_penonton,
-            ringkasan,
-            id,
-        ]
+        `UPDATE series_film SET ${updateSets} WHERE id = ?`,
+        [...values, id]
     );
+    
+    if (result.affectedRows === 0) {
+        const error = new Error("Film not found");
+        error.statusCode = 404;
+        throw error;
+    }
+
     return await getSeriesFilm({ id });
 }
 
 export async function deleteSeriesFilm({ id }) {
+    if (!id || isNaN(id)) {
+        const error = new Error("Invalid film id");
+        error.statusCode = 400; // Bad Request
+        throw error;
+    }
+
     const [rows] = await pool.query(
         `
         DELETE FROM series_film
@@ -153,8 +133,9 @@ export async function deleteSeriesFilm({ id }) {
 
     if (result === 0) {
         const error = new Error("Film not found");
-        error.statusCode = 500;
+        error.statusCode = 404;
         throw error;
     }
+
     return result;
 }

@@ -39,6 +39,6 @@ const upload = multer({
     limits: { fileSize: 5 * 1024 * 1024 }
 });
 
-const uploadSingleAvatar  = upload.single('avatar');
+const uploadSingleAvatar = upload.single('avatar');
 
 export default uploadSingleAvatar ;

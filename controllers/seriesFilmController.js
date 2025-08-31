@@ -28,10 +28,17 @@ export async function addSeriesFilm(req, res) {
             ringkasan
         })
 
-        res.status(201).json({ message: "Film created successfully", film });
+        return res.status(201).json({
+            success: true,
+            message: "Film created successfully",
+            data: film
+        });
     } catch (err) {
         const status = err.statusCode || 500;
-        res.status(status).json({ error: err.message });
+        return res.status(err.statusCode || 500).json({
+            success: false,
+            message: err.message || "Server error"
+        });
     }
 }
 
@@ -50,7 +57,7 @@ export async function getSeriesFilms(req, res) {
 
         res.status(200).json({
             success: true,
-            message: `${films.length} series/movies match`,
+            message: `${films.length} series/film match`,
             count: films.length,
             data: films
         });
@@ -65,43 +72,57 @@ export async function getSeriesFilms(req, res) {
 
 export async function getSeriesFilm(req, res) {
     const { id } = req.params
-    const film = await sfs.getSeriesFilm({ id })
-    res.status(200).send(film)
+    try {
+        const film = await sfs.getSeriesFilm({ id });
+
+        if (!film || !film.id) {
+            return res.status(404).json({
+                success: false,
+                message: "Film not found"
+            });
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "Film fetched successfully",
+            data: film
+        });
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            message: "Server error"
+        });
+    }
 }
 
 export async function updateSeriesFilm(req, res) {
     const { id } = req.params;
-    const {
-        tipe,
-        judul,
-        tanggal_keluar,
-        cast,
-        director,
-        durasi,
-        top_10,
-        rating_isi,
-        rating_penonton,
-        ringkasan
-    } = req.body
+    const updates = req.body;
 
     try {
-        const film = await sfs.updateSeriesFilm({
-            id,
-            tipe,
-            judul,
-            tanggal_keluar,
-            cast,
-            director,
-            durasi,
-            top_10,
-            rating_isi,
-            rating_penonton,
-            ringkasan
-        })
-        res.status(200).json({ message: "Film updated", film });
+        if (!req.body || Object.keys(req.body).length === 0) {
+            return res.status(400).json({
+                success: false,
+                message: "No fields provided for update"
+            });
+        }
+        const film = await sfs.updateSeriesFilm({ id, updates })
+        return res.status(200).json({
+            success: true,
+            message: "Film updated successfully",
+            data: film
+        });
     } catch (err) {
-        const status = err.statusCode || 500;
-        res.status(status).json({ error: err.message });
+        // if (err.message === "Film not found") {
+        //     return res.status(404).json({
+        //         success: false,
+        //         message: "Film not found"
+        //     });
+        // }
+        return res.status(err.statusCode || 500).json({
+            success: false,
+            message: err.message || "Server error"
+        });
     }
 }
 
@@ -110,9 +131,14 @@ export async function deleteSeriesFilm(req, res) {
 
     try {
         const film = await sfs.deleteSeriesFilm({ id })
-        res.status(200).json({ message: "Series/Film deleted" });
+        return res.status(200).json({
+            success: true,
+            message: "Series/Film deleted successfully"
+        });
     } catch (err) {
-        const status = err.statusCode || 500;
-        res.status(status).json({ error: err.message });
+        return res.status(err.statusCode || 500).json({
+            success: false,
+            message: err.message || "Server error"
+        });
     }
 }

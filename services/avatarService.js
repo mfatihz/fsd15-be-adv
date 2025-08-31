@@ -12,6 +12,29 @@ if (!fs.existsSync(avatarsDir)) {
   fs.mkdirSync(avatarsDir, { recursive: true });
 }
 
+export const uploadUserAvatar = (userId, file) => {
+  if (!file) {
+    throw {
+      status: 400,
+      message: 'No file uploaded'
+    };
+  }
+
+  // Delete old avatars except the newly uploaded one
+  deleteUserAvatars(userId, file.filename);
+
+  const uploadedFile = {
+    filename: file.filename,
+    originalName: file.originalname,
+    size: file.size,
+    mimetype: file.mimetype,
+    url: `/uploads/avatars/${file.filename}`,
+    uploadedAt: new Date()
+  };
+
+  return uploadedFile;
+};
+
 export const deleteUserAvatars = (userId, excludeFile = null) => {
   if (!fs.existsSync(avatarsDir)) return [];
 

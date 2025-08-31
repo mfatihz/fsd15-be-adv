@@ -1,32 +1,16 @@
 import path from 'path';
-import { deleteUserAvatars, getUserAvatarFile, getAvatarsDir } from '../services/avatarService.js';
+import { deleteUserAvatars, getUserAvatarFile, getAvatarsDir, uploadUserAvatar } from '../services/avatarService.js';
 
 export const uploadAvatar = (req, res) => {
   try {
-    if (!req.file) {
-      return res.status(400).json({
-        success: false,
-        message: 'No file uploaded'
-      });
-    }
-
-    // Delete old avatars except the newly uploaded one
     const userId = req.userId;
-    deleteUserAvatars(userId, req.file.filename);
-
-    const uploadedFile = {
-      filename: req.file.filename,
-      originalName: req.file.originalname,
-      size: req.file.size,
-      mimetype: req.file.mimetype,
-      url: `/uploads/avatars/${req.file.filename}`,
-      uploadedAt: new Date()
-    };
+    const avatar = req.file;
+    const uploadFile = uploadUserAvatar(userId, avatar);
 
     res.status(200).json({
       success: true,
       message: 'Avatar uploaded successfully',
-      file: uploadedFile
+      file: uploadFile
     });
   } catch (error) {
     console.error('Upload error:', error);

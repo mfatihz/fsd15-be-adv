@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import { login as loginService } from "../services/authService.js";
+import { login as loginService, logout as logoutService } from "../services/authService.js";
 import { sendVerificationEmail } from "../services/emailService.js";
 import { addUser, deleteToken, findByToken, verifyUser, findByEmail } from "../services/userService.js";
 
@@ -32,6 +32,7 @@ export async function register(req, res) {
         }
 
         return res.status(201).json(response);
+        
     } catch (error) {
         console.error(error);
         return res.status(500).json({
@@ -164,8 +165,25 @@ export async function login(req, res) {
             message: 'Login successful',
             token
         });
+        
     } catch (error) {
         console.error("Login error: ", error);
+        return res.status(500).json({
+            success: false,
+            message: 'Server error'
+        })
+    }
+}
+
+export async function logout(req, res) {
+    try {
+        await logoutService({ userId: req.userId });
+        return res.status(200).json({
+            success: true,
+            message: "Logged out successfully"
+        });
+    } catch (error) {
+        console.error("Logout error: ", error);
         return res.status(500).json({
             success: false,
             message: 'Server error'
