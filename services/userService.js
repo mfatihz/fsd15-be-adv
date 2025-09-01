@@ -98,14 +98,12 @@ export async function deleteUser({ id }) {
         `,
         [id]
     );
-
-    const result = await rows.affectedRows
-    if (result === 0) {
+    
+    if (rows.affectedRows === 0) {
         const error = new Error("User not found");
-        error.statusCode = 500;
+        error.statusCode = 404;
         throw error;
     }
-    return result;
 }
 
 export async function findByEmail(email) {

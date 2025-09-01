@@ -26,7 +26,7 @@ export async function getPackages() {
     const [rows] = await pool.query(`
         SELECT * FROM paket
     `)
-    return rows
+    return rows || [];
 }
 
 export async function getPackage({ id }) {
@@ -35,7 +35,7 @@ export async function getPackage({ id }) {
         FROM paket
         WHERE id = ?
         `, [id])
-    return rows[0]
+    return rows[0] || [];
 }
 
 export async function updatePackage({

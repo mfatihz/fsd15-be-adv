@@ -2,17 +2,37 @@ import * as us from "../services/userService.js";
 
 export async function getUsers(req, res) {
     const user = await us.getUsers();
-    res.status(200).send(user);
+
+    try {
+        return res.status(200).json({
+            success: true,
+            message: "Get User data successfully",
+            data: user
+        });
+    } catch (err) {
+        return res.status(err.statusCode || 500).json({
+            success: false,
+            message: err.message || "Server error"
+        });
+    }
 }
 
 export async function getUser(req, res) {
     const id = req.userId;
-    const user = await us.getUser({ id });
-    return res.status(200).json({
-        success: true,
-        message: "Get User data successfully",
-        data: user
-    });
+
+    try {
+        const user = await us.getUser({ id });
+        return res.status(200).json({
+            success: true,
+            message: "Get User data successfully",
+            data: user
+        });
+    } catch (err) {
+        return res.status(err.statusCode || 500).json({
+            success: false,
+            message: err.message || "Server error"
+        });
+    }
 }
 
 export async function updateUser(req, res) {
@@ -28,18 +48,26 @@ export async function updateUser(req, res) {
             data: user
         });
     } catch (err) {
-        const status = err.statusCode || 500;
-        res.status(status).json({ error: err.message });
+        return res.status(err.statusCode || 500).json({
+            success: false,
+            message: err.message || "Server error"
+        });
     }
 }
 
 export async function deleteUser(req, res) {
     const id = req.userId;
     try {
-        const user = await us.deleteUser({ id });
-        res.status(200).json({ message: "User deleted" });
+        await us.deleteUser({ id });
+        return res.status(200).json({
+            success: true,
+            message: "User deleted successfully",
+            data: id
+        });
     } catch (err) {
-        const status = err.statusCode || 500;
-        res.status(status).json({ error: err.message });
+        return res.status(err.statusCode || 500).json({
+            success: false,
+            message: err.message || "Server error"
+        });
     }
 }

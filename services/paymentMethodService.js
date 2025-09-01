@@ -20,7 +20,7 @@ export async function getPayments() {
     const [rows] = await pool.query(`
         SELECT * FROM pembayaran
     `)
-    return rows
+    return rows || [];
 }
 
 export async function getPayment({ id }) {
@@ -30,7 +30,7 @@ export async function getPayment({ id }) {
         WHERE id = ?
         `, [id]
     )
-    return rows[0]
+    return rows[0] || [];
 }
 
 export async function updatePayment({
