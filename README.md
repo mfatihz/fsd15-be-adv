@@ -24,9 +24,9 @@ REFRESH_TOKEN_SECRET=0aa5379a8fac966726cd4c95dee3ba70cbdd1dc23eeb1a314a20e0ef995
 
 # Email
 EMAIL_SERVICE=gmail
-EMAIL_USERNAME=duahsatuo@gmail.com
-EMAIL_PASSWORD=izwverycqiibgago
-EMAIL_FROM=duahsatuo@gmail.com
+EMAIL_USERNAME=***@gmail.com
+EMAIL_PASSWORD=****************
+EMAIL_FROM=***@gmail.com
 ```
 
 ## Database
